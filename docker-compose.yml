@@ -1,0 +1,41 @@
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: zapmail_postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: zapmail
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_zapmail:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: zapmail_redis_container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./users.acl:/usr/local/etc/redis/users.acl:ro
+      - redis_data_zapmail:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  backend:
+    build: .
+    container_name: zapmail_backend_container
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres_data_zapmail:
+  redis_data_zapmail:
+
