@@ -9,6 +9,8 @@ type Config struct {
 	DbString    string `mapstructure:"DB_STRING"`
 	JwtSecret   string `mapstructure:"JWT_SECRET"`
 	Environment string `mapstructure:"ENVIRONMENT"`
+	RedisAddr   string `mapstructure:"REDIS_ADDR"`
+	RedisPasswd string `mapstructure:"REDIS_PASSWD"`
 }
 
 func LoadConfig(path string) (config Config, err error) {

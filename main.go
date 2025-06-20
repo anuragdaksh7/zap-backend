@@ -18,6 +18,17 @@ func init() {
 
 	config.ConnectDB()
 	config.SyncDB()
+	config.InitRedis()
+	defer func() {
+		if config.RedisClient != nil {
+			err := config.RedisClient.Close()
+			if err != nil {
+				panic(err)
+				return
+			}
+			log.Println("Redis client closed.")
+		}
+	}()
 }
 
 func main() {
