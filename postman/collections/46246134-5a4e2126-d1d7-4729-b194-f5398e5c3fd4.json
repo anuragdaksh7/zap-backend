@@ -4,5 +4,11 @@
 		"name": "zapmail",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "oauth",
+			"item": [],
+			"id": "46246134-7e9f14b9-d125-4682-8b1c-e0ccf31b5eb5"
+		}
+	]
 }
