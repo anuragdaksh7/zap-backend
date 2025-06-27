@@ -9,6 +9,7 @@ type User struct {
 	Password   string
 	IsVerified bool
 	OTP        string
+	ProfilePic string
 
 	UserToken *UserToken `gorm:"foreignKey:UserID;references:ID"`
 	Campaign  []Campaign `gorm:"foreignKey:UserID;references:ID"`

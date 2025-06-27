@@ -4,8 +4,10 @@ import (
 	"log"
 
 	"github.com/anuragdaksh7/zapmail-backend/config"
+	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
 	"github.com/anuragdaksh7/zapmail-backend/logger"
 	"github.com/anuragdaksh7/zapmail-backend/router"
+	"github.com/anuragdaksh7/zapmail-backend/utils"
 )
 
 var _config config.Config
@@ -16,6 +18,7 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+	utils.InitEncryptionKey(_config.EncryptionKey)
 
 	logger.InitLogger(_config)
 	logger.Logger.Info("Logger initialized")
@@ -39,6 +42,11 @@ func main() {
 			log.Println("Redis client closed.")
 		}
 	}()
-	router.InitRouter()
+
+	oAuthSvc := oAuth.NewService()
+
+	oAuthHandler := oAuth.NewHandler(oAuthSvc)
+
+	router.InitRouter(oAuthHandler)
 	log.Fatal(router.Start("0.0.0.0:" + _config.PORT))
 }

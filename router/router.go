@@ -3,13 +3,15 @@ package router
 import (
 	"net/http"
 
+	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 var r *gin.Engine
 
-func InitRouter() {
+func InitRouter(
+	oAuthHandler *oAuth.Handler) {
 	r = gin.Default()
 
 	r.Use(cors.New(cors.Config{
@@ -25,6 +27,10 @@ func InitRouter() {
 			"message": "Hello World",
 		})
 	})
+
+	oAuthRouter := r.Group("/oauth")
+	oAuthRouter.GET("google/redirect-uri", oAuthHandler.GetRedirectURL)
+	oAuthRouter.GET("/google/callback", oAuthHandler.HandleGoogleCallback)
 }
 
 func Start(addr string) error {

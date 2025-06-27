@@ -6,6 +6,7 @@ require (
 	github.com/axiomhq/axiom-go v0.25.0
 	github.com/gin-contrib/cors v1.7.6
 	github.com/gin-gonic/gin v1.10.1
+	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/redis/go-redis/v9 v9.10.0
 	github.com/spf13/viper v1.20.1
 	go.uber.org/zap v1.27.0
