@@ -3,7 +3,9 @@ package router
 import (
 	"net/http"
 
+	"github.com/anuragdaksh7/zapmail-backend/internal/campaign"
 	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
+	"github.com/anuragdaksh7/zapmail-backend/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +13,9 @@ import (
 var r *gin.Engine
 
 func InitRouter(
-	oAuthHandler *oAuth.Handler) {
+	oAuthHandler *oAuth.Handler,
+	campaignHandler *campaign.Handler,
+) {
 	r = gin.Default()
 
 	r.Use(cors.New(cors.Config{
@@ -31,6 +35,9 @@ func InitRouter(
 	oAuthRouter := r.Group("/oauth")
 	oAuthRouter.GET("google/redirect-uri", oAuthHandler.GetRedirectURL)
 	oAuthRouter.GET("/google/callback", oAuthHandler.HandleGoogleCallback)
+
+	campaignRouter := r.Group("/campaign")
+	campaignRouter.POST("", middleware.RequireAuth, campaignHandler.CreateCampaign)
 }
 
 func Start(addr string) error {

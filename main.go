@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/anuragdaksh7/zapmail-backend/config"
+	"github.com/anuragdaksh7/zapmail-backend/internal/campaign"
 	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
 	"github.com/anuragdaksh7/zapmail-backend/logger"
 	"github.com/anuragdaksh7/zapmail-backend/router"
@@ -44,9 +45,11 @@ func main() {
 	}()
 
 	oAuthSvc := oAuth.NewService()
+	campaignSvc := campaign.NewService()
 
 	oAuthHandler := oAuth.NewHandler(oAuthSvc)
+	campaignHandler := campaign.NewHandler(campaignSvc)
 
-	router.InitRouter(oAuthHandler)
+	router.InitRouter(oAuthHandler, campaignHandler)
 	log.Fatal(router.Start("0.0.0.0:" + _config.PORT))
 }
