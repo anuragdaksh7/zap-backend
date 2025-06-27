@@ -7,7 +7,20 @@
 	"item": [
 		{
 			"name": "oauth",
-			"item": [],
+			"item": [
+				{
+					"name": "get redirect uri",
+					"id": "46246134-76e1e4b5-66dd-479c-946f-2d1d69e4df10",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "46246134-7e9f14b9-d125-4682-8b1c-e0ccf31b5eb5"
 		}
 	]
