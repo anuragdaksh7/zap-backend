@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/anuragdaksh7/zapmail-backend/config"
+	"github.com/anuragdaksh7/zapmail-backend/logger"
 	"github.com/anuragdaksh7/zapmail-backend/router"
 )
 
@@ -16,9 +17,18 @@ func init() {
 		panic(err)
 	}
 
+	logger.InitLogger(_config)
+	logger.Logger.Info("Logger initialized")
 	config.ConnectDB()
+	logger.Logger.Info("DB connection established")
 	config.SyncDB()
+	logger.Logger.Info("DB sync completed")
 	config.InitRedis()
+	logger.Logger.Info("Redis connected")
+	defer logger.Logger.Sync()
+}
+
+func main() {
 	defer func() {
 		if config.RedisClient != nil {
 			err := config.RedisClient.Close()
@@ -29,9 +39,6 @@ func init() {
 			log.Println("Redis client closed.")
 		}
 	}()
-}
-
-func main() {
 	router.InitRouter()
 	log.Fatal(router.Start("0.0.0.0:" + _config.PORT))
 }

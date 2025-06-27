@@ -5,12 +5,18 @@ import (
 )
 
 type Config struct {
-	PORT        string `mapstructure:"PORT"`
-	DbString    string `mapstructure:"DB_STRING"`
-	JwtSecret   string `mapstructure:"JWT_SECRET"`
-	Environment string `mapstructure:"ENVIRONMENT"`
-	RedisAddr   string `mapstructure:"REDIS_ADDR"`
-	RedisPasswd string `mapstructure:"REDIS_PASSWD"`
+	PORT                    string `mapstructure:"PORT"`
+	DbString                string `mapstructure:"DB_STRING"`
+	JwtSecret               string `mapstructure:"JWT_SECRET"`
+	Environment             string `mapstructure:"ENVIRONMENT"`
+	RedisAddr               string `mapstructure:"REDIS_ADDR"`
+	RedisPasswd             string `mapstructure:"REDIS_PASSWD"`
+	AxiomToken              string `mapstructure:"AXIOM_TOKEN"`
+	AxiomOrg                string `mapstructure:"AXIOM_ORG"`
+	AxiomDataset            string `mapstructure:"AXIOM_DATASET"`
+	GoogleOAuthClientID     string `mapstructure:"GOOGLE_OAUTH_CLIENT_ID"`
+	GoogleOAuthClientSecret string `mapstructure:"GOOGLE_OAUTH_CLIENT_SECRET"`
+	GoogleOAuthRedirectURL  string `mapstructure:"GOOGLE_OAUTH_REDIRECT"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
