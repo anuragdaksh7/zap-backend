@@ -16,6 +16,69 @@
 					},
 					"request": {
 						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/oauth/google/redirect-uri",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"oauth",
+								"google",
+								"redirect-uri"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46246134-4c7f629b-da78-4f8f-9e50-5adc2a3cd860",
+							"name": "get redirect uri",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/oauth/google/redirect-uri",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"oauth",
+										"google",
+										"redirect-uri"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 18:11:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "544"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"redirect_url\": \"https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=402437169038-hbqd76hpf42f2fu6ru57c0tid9ptrq21.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Foauth%2Fgoogle%2Fcallback&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send&state=random-state-token\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"id": "46246134-3bfce5d6-3f0a-42ad-a5d9-d4c8ad3dee90",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
 						"header": []
 					},
 					"response": []
