@@ -72,19 +72,260 @@
 					]
 				},
 				{
-					"name": "New Request",
+					"name": "callback",
 					"id": "46246134-3bfce5d6-3f0a-42ad-a5d9-d4c8ad3dee90",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/oauth/google/callback?state=random-state-token&code=4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=1&prompt=none",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"oauth",
+								"google",
+								"callback"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "random-state-token"
+								},
+								{
+									"key": "code",
+									"value": "4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q"
+								},
+								{
+									"key": "scope",
+									"value": "email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email"
+								},
+								{
+									"key": "authuser",
+									"value": "1"
+								},
+								{
+									"key": "prompt",
+									"value": "none"
+								}
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "46246134-44a6b6d3-0ae4-4f4b-8510-855504f2e683",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/oauth/google/callback?state=random-state-token&code=4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=1&prompt=none",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"oauth",
+										"google",
+										"callback"
+									],
+									"query": [
+										{
+											"key": "state",
+											"value": "random-state-token"
+										},
+										{
+											"key": "code",
+											"value": "4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q"
+										},
+										{
+											"key": "scope",
+											"value": "email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email"
+										},
+										{
+											"key": "authuser",
+											"value": "1"
+										},
+										{
+											"key": "prompt",
+											"value": "none"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM2Mzk5ODgsImlkIjoxfQ.q9QK5Yx76WwT29oxO80ejaggkqKEcRm75AAdD8nGP6M; Path=/; Max-Age=2592000; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 18:13:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTM2Mzk5ODgsImlkIjoxfQ.q9QK5Yx76WwT29oxO80ejaggkqKEcRm75AAdD8nGP6M\",\n        \"id\": 1,\n        \"name\": \"Anurag Daksh\",\n        \"email\": \"anuragdaksh.work@gmail.com\",\n        \"profilePicture\": \"https://lh3.googleusercontent.com/a/ACg8ocIAYg6AWa49X55vjEOmJaBVGxw0BDmIR02I7qAi6zS6n400xu4=s96-c\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "46246134-7e9f14b9-d125-4682-8b1c-e0ccf31b5eb5"
+		},
+		{
+			"name": "campaign",
+			"item": [
+				{
+					"name": "create",
+					"id": "46246134-720c45a2-8f71-4ff8-a0a5-062a48b18559",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"campaign 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/campaign",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"campaign"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46246134-68a4d2b2-87d6-423c-92be-aedc6491c6c3",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"campaign 1\",\r\n    \"description\": \"lol\",\r\n    \"run_every_n_minutes\": 20,\r\n    \"total_prospects\": 120\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/campaign",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"campaign"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 18:22:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "188"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"name\": \"campaign 1\",\n        \"description\": \"lol\",\n        \"run_every_n_minutes\": 20,\n        \"total_prospects\": 120\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get campaigns",
+					"id": "46246134-413fdb27-5c64-4bef-9f55-6a35b21f014c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/campaign",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"campaign"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46246134-11f7f41b-fb12-452d-8eb3-a67c8634859d",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/campaign",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"campaign"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Jun 2025 03:38:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "300"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"campaigns\": [\n            {\n                \"id\": 1,\n                \"user_id\": 1,\n                \"name\": \"campaign 1\",\n                \"description\": \"lol\",\n                \"run_every_n_minutes\": 20,\n                \"total_prospects\": 120,\n                \"processed_prospects\": 0,\n                \"processed_at\": null,\n                \"current_status\": \"CREATING\",\n                \"created_at\": \"2025-06-27T23:52:03.350822+05:30\",\n                \"updated_at\": \"2025-06-27T23:52:03.350822+05:30\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "46246134-b5b21b19-0b72-4efd-8e6b-3d78a39af004"
 		}
 	]
 }
