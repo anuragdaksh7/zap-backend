@@ -8,7 +8,7 @@ import (
 
 type Prospect struct {
 	gorm.Model
-	CampaignID  uint
+	CampaignID  uint `gorm:"index"`
 	FullName    string
 	Email       string
 	Phone       *string

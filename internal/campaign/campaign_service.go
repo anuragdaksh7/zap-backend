@@ -76,3 +76,53 @@ func (s *service) GetCampaigns(c context.Context, req *GetCampaignsReq) (*GetCam
 
 	return &GetCampaignsRes{userCampaigns}, nil
 }
+
+func (s *service) CreateCampaignWithProspects(c context.Context, req *CreateCampaignWithProspectsReq) (*CreateCampaignRes, error) {
+	var newCampaign = models.Campaign{
+		UserID:             req.UserID,
+		Name:               req.Name,
+		Description:        "",
+		RunEveryNMinutes:   20,
+		TotalProspects:     uint(len(req.Prospects)),
+		ProcessedProspects: 0,
+		ProcessedAt:        nil,
+		CurrentStatus:      "RUNNING",
+	}
+	s.DB.Save(&newCampaign)
+	logger.Logger.Info("Campaign created", zap.Any("Campaign", newCampaign))
+
+	go func() {
+		var prospects []models.Prospect
+		logger.Logger.Info("prospects found: ", zap.Int("prospects", len(prospects)))
+		for _, prospect := range req.Prospects {
+			prospects = append(prospects, models.Prospect{
+				CampaignID:  newCampaign.ID,
+				FullName:    prospect.FullName,
+				Email:       prospect.Email,
+				Phone:       prospect.Phone,
+				Company:     prospect.Company,
+				Position:    prospect.Position,
+				LinkedInURL: prospect.LinkedInURL,
+				Status:      prospect.Status,
+				Location:    prospect.Location,
+				LastContact: prospect.LastContact,
+				ResponseAt:  prospect.ResponseAt,
+				Notes:       prospect.Notes,
+			})
+		}
+		logger.Logger.Info("prospects ready to create: ", zap.Int("prospects", len(prospects)))
+		s.DB.Create(&prospects)
+	}()
+
+	return &CreateCampaignRes{
+		ID:                 newCampaign.ID,
+		UserID:             newCampaign.UserID,
+		Name:               newCampaign.Name,
+		Description:        newCampaign.Description,
+		RunEveryNMinutes:   newCampaign.RunEveryNMinutes,
+		TotalProspects:     newCampaign.TotalProspects,
+		ProcessedProspects: newCampaign.ProcessedProspects,
+		ProcessedAt:        newCampaign.ProcessedAt,
+		CurrentStatus:      newCampaign.CurrentStatus,
+	}, nil
+}

@@ -39,6 +39,7 @@ func InitRouter(
 	campaignRouter := r.Group("/campaign")
 	campaignRouter.POST("", middleware.RequireAuth, campaignHandler.CreateCampaign)
 	campaignRouter.GET("", middleware.RequireAuth, campaignHandler.GetCampaigns)
+	campaignRouter.POST("/prospects", middleware.RequireAuth, campaignHandler.CreateCampaignWithProspects)
 }
 
 func Start(addr string) error {

@@ -3,6 +3,8 @@ package campaign
 import (
 	"context"
 	"time"
+
+	"github.com/anuragdaksh7/zapmail-backend/internal/prospect"
 )
 
 type Campaign struct {
@@ -44,7 +46,14 @@ type GetCampaignsRes struct {
 	Campaigns []Campaign `json:"campaigns"`
 }
 
+type CreateCampaignWithProspectsReq struct {
+	UserID    uint                   `json:"user_id"`
+	Name      string                 `json:"name"`
+	Prospects []prospect.NewProspect `json:"prospects"`
+}
+
 type Service interface {
 	CreateCampaign(c context.Context, req *CreateCampaignReq) (*CreateCampaignRes, error)
 	GetCampaigns(c context.Context, req *GetCampaignsReq) (*GetCampaignsRes, error)
+	CreateCampaignWithProspects(c context.Context, req *CreateCampaignWithProspectsReq) (*CreateCampaignRes, error)
 }
