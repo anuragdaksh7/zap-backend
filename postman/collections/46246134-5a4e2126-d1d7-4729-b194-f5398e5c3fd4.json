@@ -334,7 +334,55 @@
 						"method": "GET",
 						"header": []
 					},
-					"response": []
+					"response": [
+						{
+							"id": "46246134-bc0f7d52-d514-4e9d-ac63-273dbf08d128",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"with prospects\",\r\n    \"prospects\": [\r\n        {\r\n            \"full_name\": \"Anurag Daksh\",\r\n            \"email\": \"anuragdaksh77777@gmail.com\",\r\n            \"phone\": \"1231231234\",\r\n            \"company\": \"yeah idk\",\r\n            \"position\": \"sde\",\r\n            \"location\": \"home\"\r\n        },\r\n        {\r\n            \"full_name\": \"Anurag\",\r\n            \"email\": \"anuragdaksh.work@gmail.com\",\r\n            \"phone\": \"0987654321\",\r\n            \"company\": \"bruh\",\r\n            \"position\": \"sde\",\r\n            \"notes\": \"lol\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/campaign/prospects",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"campaign",
+										"prospects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Jun 2025 05:29:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"user_id\": 1,\n        \"name\": \"with prospects\",\n        \"description\": \"\",\n        \"run_every_n_minutes\": 20,\n        \"total_prospects\": 2,\n        \"processed_prospects\": 0,\n        \"processed_at\": null,\n        \"current_status\": \"RUNNING\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "46246134-b5b21b19-0b72-4efd-8e6b-3d78a39af004"
