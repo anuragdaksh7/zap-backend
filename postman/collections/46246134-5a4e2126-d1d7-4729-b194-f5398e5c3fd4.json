@@ -331,8 +331,27 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"with prospects\",\r\n    \"prospects\": [\r\n        {\r\n            \"full_name\": \"Anurag Daksh\",\r\n            \"email\": \"anuragdaksh77777@gmail.com\",\r\n            \"phone\": \"1231231234\",\r\n            \"company\": \"yeah idk\",\r\n            \"position\": \"sde\",\r\n            \"location\": \"home\"\r\n        },\r\n        {\r\n            \"full_name\": \"Anurag\",\r\n            \"email\": \"anuragdaksh.work@gmail.com\",\r\n            \"phone\": \"0987654321\",\r\n            \"company\": \"bruh\",\r\n            \"position\": \"sde\",\r\n            \"notes\": \"lol\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/campaign/prospects",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"campaign",
+								"prospects"
+							]
+						}
 					},
 					"response": [
 						{
