@@ -45,3 +45,26 @@ func (h *Handler) CreateCampaign(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": res})
 }
+
+func (h *Handler) GetCampaigns(c *gin.Context) {
+	user, exists := c.Get("user")
+	if !exists {
+		logger.Logger.Warn("Failed to get user from context : UNAUTHORIZED")
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	currentUser := user.(models.User)
+
+	var req GetCampaignsReq
+	req.UserID = currentUser.ID
+
+	res, err := h.Service.GetCampaigns(c, &req)
+	if err != nil {
+		logger.Logger.Error("Failed to get campaigns: ", zap.Error(err))
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": res})
+}
