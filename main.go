@@ -6,6 +6,7 @@ import (
 	"github.com/anuragdaksh7/zapmail-backend/config"
 	"github.com/anuragdaksh7/zapmail-backend/internal/campaign"
 	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
+	"github.com/anuragdaksh7/zapmail-backend/jobs"
 	"github.com/anuragdaksh7/zapmail-backend/logger"
 	"github.com/anuragdaksh7/zapmail-backend/router"
 	"github.com/anuragdaksh7/zapmail-backend/utils"
@@ -43,6 +44,8 @@ func main() {
 			log.Println("Redis client closed.")
 		}
 	}()
+
+	jobs.StartCronJobs()
 
 	oAuthSvc := oAuth.NewService()
 	campaignSvc := campaign.NewService()
