@@ -81,7 +81,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/oauth/google/callback?state=random-state-token&code=4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=1&prompt=none",
+							"raw": "{{HOST}}/oauth/google/callback?state=random-state-token&code=4/0AVMBsJhaOUZsJIAq2cP7VhAy7gtcnDqoB0cNaL5M-A0s_rYgwa3-19YDF3N6DJ-1B4YCCg&scope=email%20profile%20https://www.googleapis.com/auth/gmail.readonly%20https://www.googleapis.com/auth/gmail.send%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email%20openid&authuser=1&prompt=consent",
 							"host": [
 								"{{HOST}}"
 							],
@@ -97,11 +97,11 @@
 								},
 								{
 									"key": "code",
-									"value": "4%2F0AVMBsJiKcLoNyUR2Qmm3T7YRo6xtDnWPwf1Z3ibo8MKNylsbss-RbA_beJK-9dEv9f9-9Q"
+									"value": "4/0AVMBsJhaOUZsJIAq2cP7VhAy7gtcnDqoB0cNaL5M-A0s_rYgwa3-19YDF3N6DJ-1B4YCCg"
 								},
 								{
 									"key": "scope",
-									"value": "email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email"
+									"value": "email%20profile%20https://www.googleapis.com/auth/gmail.readonly%20https://www.googleapis.com/auth/gmail.send%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email%20openid"
 								},
 								{
 									"key": "authuser",
@@ -109,7 +109,7 @@
 								},
 								{
 									"key": "prompt",
-									"value": "none"
+									"value": "consent"
 								}
 							]
 						}
@@ -410,8 +410,27 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"template_id\": 2,\r\n    \"campaign_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/campaign/template",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"campaign",
+								"template"
+							]
+						}
 					},
 					"response": []
 				}
@@ -500,6 +519,24 @@
 				}
 			],
 			"id": "46246134-a21df3bb-c9cf-4c0b-96ec-b244b641db44"
+		},
+		{
+			"name": "emails",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "46246134-73f3391e-52d4-4ca0-a1d8-5cbb044e6dd0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "46246134-2a96337e-878f-4821-bc98-39571a88d10f"
 		}
 	]
 }
