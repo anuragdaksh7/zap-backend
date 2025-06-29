@@ -521,8 +521,21 @@
 			"id": "46246134-a21df3bb-c9cf-4c0b-96ec-b244b641db44"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "emails",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "46246134-73f3391e-52d4-4ca0-a1d8-5cbb044e6dd0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "46246134-2a96337e-878f-4821-bc98-39571a88d10f"
 		}
 	]
