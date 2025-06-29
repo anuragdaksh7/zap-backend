@@ -17,5 +17,6 @@ type Campaign struct {
 	ProcessedAt        *time.Time
 	CurrentStatus      string
 
-	User User `gorm:"foreignKey:UserID;references:ID"`
+	User      User       `gorm:"foreignKey:UserID;references:ID"`
+	Templates []Template `gorm:"many2many:template_campaigns;"`
 }

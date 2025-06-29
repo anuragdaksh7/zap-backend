@@ -2,6 +2,7 @@ package campaign
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/anuragdaksh7/zapmail-backend/config"
@@ -125,4 +126,48 @@ func (s *service) CreateCampaignWithProspects(c context.Context, req *CreateCamp
 		ProcessedAt:        newCampaign.ProcessedAt,
 		CurrentStatus:      newCampaign.CurrentStatus,
 	}, nil
+}
+
+func (s *service) ToggleTemplateAssociation(c context.Context, req *ToggleTemplateAssociationReq) (*ToggleTemplateAssociationRes, error) {
+	var templateCampaign TemplateCampaign
+	var template models.Template
+	var campaign models.Campaign
+
+	if err := s.DB.First(&template, req.TemplateID).Error; err != nil {
+		return nil, err // or handle record not found
+	}
+
+	// Load campaign
+	if err := s.DB.First(&campaign, req.CampaignID).Error; err != nil {
+		return nil, err
+	}
+
+	// Check ownership
+	if template.UserID != req.UserID || campaign.UserID != req.UserID {
+		logger.Logger.Info("template campaign user id does not match template campaign user id")
+		return nil, errors.New("unauthorized access to template or campaign")
+	}
+
+	err := s.DB.Where("template_id = ? AND campaign_id = ?", req.TemplateID, req.CampaignID).First(&templateCampaign).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		logger.Logger.Info("template campaign not found")
+		s.DB.Table("template_campaigns").Create(&TemplateCampaign{
+			TemplateID: req.TemplateID,
+			CampaignID: req.CampaignID,
+		})
+		logger.Logger.Info("created new template campaign association")
+	} else if err != nil {
+		logger.Logger.Error("Error on ToggleTemplateAssociation", zap.Error(err))
+	} else {
+		s.DB.Unscoped().Table("template_campaigns").
+			Where("template_id = ? AND campaign_id = ?", req.TemplateID, req.CampaignID).
+			Delete(&TemplateCampaign{})
+	}
+
+	s.DB.
+		Preload("Template").
+		Where("id = ?", req.CampaignID).
+		First(&campaign)
+
+	return &ToggleTemplateAssociationRes{}, nil
 }

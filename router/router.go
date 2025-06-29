@@ -5,6 +5,7 @@ import (
 
 	"github.com/anuragdaksh7/zapmail-backend/internal/campaign"
 	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
+	"github.com/anuragdaksh7/zapmail-backend/internal/template"
 	"github.com/anuragdaksh7/zapmail-backend/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,7 @@ var r *gin.Engine
 func InitRouter(
 	oAuthHandler *oAuth.Handler,
 	campaignHandler *campaign.Handler,
+	templateHandler *template.Handler,
 ) {
 	r = gin.Default()
 
@@ -40,6 +42,9 @@ func InitRouter(
 	campaignRouter.POST("", middleware.RequireAuth, campaignHandler.CreateCampaign)
 	campaignRouter.GET("", middleware.RequireAuth, campaignHandler.GetCampaigns)
 	campaignRouter.POST("/prospects", middleware.RequireAuth, campaignHandler.CreateCampaignWithProspects)
+
+	templateRouter := r.Group("/template")
+	templateRouter.POST("", middleware.RequireAuth, templateHandler.CreateTemplate)
 }
 
 func Start(addr string) error {

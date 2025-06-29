@@ -97,3 +97,15 @@ func (h *Handler) CreateCampaignWithProspects(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": res})
 }
+
+//func (h *Handler) ToggleCampaignTemplateAssociations(c *gin.Context) {
+//	user, exists := c.Get("user")
+//	if !exists {
+//		logger.Logger.Warn("Failed to get user from context : UNAUTHORIZED")
+//		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+//		return
+//	}
+//
+//	currentUser := user.(models.User)
+//
+//}

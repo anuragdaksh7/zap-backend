@@ -52,8 +52,23 @@ type CreateCampaignWithProspectsReq struct {
 	Prospects []prospect.NewProspect `json:"prospects"`
 }
 
+type TemplateCampaign struct {
+	TemplateID uint
+	CampaignID uint
+}
+
+type ToggleTemplateAssociationReq struct {
+	UserID     uint `json:"user_id"`
+	TemplateID uint `json:"template_id"`
+	CampaignID uint `json:"campaign_id"`
+}
+
+type ToggleTemplateAssociationRes struct {
+}
+
 type Service interface {
 	CreateCampaign(c context.Context, req *CreateCampaignReq) (*CreateCampaignRes, error)
 	GetCampaigns(c context.Context, req *GetCampaignsReq) (*GetCampaignsRes, error)
 	CreateCampaignWithProspects(c context.Context, req *CreateCampaignWithProspectsReq) (*CreateCampaignRes, error)
+	ToggleTemplateAssociation(c context.Context, req *ToggleTemplateAssociationReq) (*ToggleTemplateAssociationRes, error)
 }
