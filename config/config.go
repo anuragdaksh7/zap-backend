@@ -18,6 +18,7 @@ type Config struct {
 	GoogleOAuthClientSecret string `mapstructure:"GOOGLE_OAUTH_CLIENT_SECRET"`
 	GoogleOAuthRedirectURL  string `mapstructure:"GOOGLE_OAUTH_REDIRECT"`
 	EncryptionKey           string `mapstructure:"ENC_KEY"`
+	GeminiAPIKey            string `mapstructure:"GEMINI_API_KEY"`
 }
 
 func LoadConfig(path string) (config Config, err error) {

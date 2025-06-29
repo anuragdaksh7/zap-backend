@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/anuragdaksh7/zapmail-backend/config"
+	"github.com/anuragdaksh7/zapmail-backend/internal/ai"
 	"github.com/anuragdaksh7/zapmail-backend/internal/campaign"
 	"github.com/anuragdaksh7/zapmail-backend/internal/oAuth"
 	"github.com/anuragdaksh7/zapmail-backend/internal/template"
@@ -31,6 +32,8 @@ func init() {
 	logger.Logger.Info("DB sync completed")
 	config.InitRedis()
 	logger.Logger.Info("Redis connected")
+	ai.InitGemini()
+	logger.Logger.Info("Gemini connected")
 	defer logger.Logger.Sync()
 }
 
