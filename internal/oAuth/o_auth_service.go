@@ -30,7 +30,11 @@ func NewService() Service {
 }
 
 func (s *service) GetRedirectURL(c context.Context) (*GetRedirectURLRes, error) {
-	url := config.GoogleOAuthConfig.AuthCodeURL("random-state-token", oauth2.AccessTypeOffline)
+	url := config.GoogleOAuthConfig.AuthCodeURL(
+		"random-state-token",
+		oauth2.AccessTypeOffline,
+		oauth2.SetAuthURLParam("prompt", "consent"),
+	)
 	return &GetRedirectURLRes{
 		RedirectURL: url,
 	}, nil
