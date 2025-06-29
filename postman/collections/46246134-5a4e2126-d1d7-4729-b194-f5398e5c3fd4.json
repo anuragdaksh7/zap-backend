@@ -405,6 +405,89 @@
 				}
 			],
 			"id": "46246134-b5b21b19-0b72-4efd-8e6b-3d78a39af004"
+		},
+		{
+			"name": "templates",
+			"item": [
+				{
+					"name": "create",
+					"id": "46246134-77d5fed1-b553-4dcd-ae99-1452d2961f55",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sender\": \"from anurag - backend dev zapmail\",\r\n    \"subject\": \"project status report\",\r\n    \"content\": \"write a mail asking other devs about zapmail's current report\\n example: Hey team, Quick reminder to share your daily update so we can stay in sync and unblock each other faster. Please respond in the format below by 7 PM IST: 🛠️ What I worked on today: 🚧 What I'm stuck with (if any): 🚀 Plan for tomorrow: Thanks for keeping things transparent and moving forward! 💪\",\r\n    \"name\": \"daily sync up\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/template",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46246134-eebbcb0a-20a1-4c70-a652-c72c50c33809",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sender\": \"from anurag - backend dev zapmail\",\r\n    \"subject\": \"project status report\",\r\n    \"content\": \"write a mail asking other devs about zapmail's current report\\n example: Hey team, Quick reminder to share your daily update so we can stay in sync and unblock each other faster. Please respond in the format below by 7 PM IST: 🛠️ What I worked on today: 🚧 What I'm stuck with (if any): 🚀 Plan for tomorrow: Thanks for keeping things transparent and moving forward! 💪\",\r\n    \"name\": \"daily sync up\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/template",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"template"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 29 Jun 2025 06:50:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": 2\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "46246134-a21df3bb-c9cf-4c0b-96ec-b244b641db44"
 		}
 	]
 }
