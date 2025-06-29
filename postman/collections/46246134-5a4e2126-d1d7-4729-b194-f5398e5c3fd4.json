@@ -404,7 +404,7 @@
 					]
 				},
 				{
-					"name": "New Request",
+					"name": "add template",
 					"id": "46246134-8c1038cb-3e68-4057-8482-e94ab1e90f9b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
