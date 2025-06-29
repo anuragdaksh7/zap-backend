@@ -165,9 +165,9 @@ func (s *service) ToggleTemplateAssociation(c context.Context, req *ToggleTempla
 	}
 
 	s.DB.
-		Preload("Template").
+		Preload("Templates").
 		Where("id = ?", req.CampaignID).
 		First(&campaign)
 
-	return &ToggleTemplateAssociationRes{}, nil
+	return &ToggleTemplateAssociationRes{campaign.Templates}, nil
 }

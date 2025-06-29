@@ -42,6 +42,7 @@ func InitRouter(
 	campaignRouter.POST("", middleware.RequireAuth, campaignHandler.CreateCampaign)
 	campaignRouter.GET("", middleware.RequireAuth, campaignHandler.GetCampaigns)
 	campaignRouter.POST("/prospects", middleware.RequireAuth, campaignHandler.CreateCampaignWithProspects)
+	campaignRouter.POST("/template", middleware.RequireAuth, campaignHandler.ToggleCampaignTemplateAssociations)
 
 	templateRouter := r.Group("/template")
 	templateRouter.POST("", middleware.RequireAuth, templateHandler.CreateTemplate)

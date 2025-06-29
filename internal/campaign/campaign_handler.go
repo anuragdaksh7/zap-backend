@@ -98,14 +98,31 @@ func (h *Handler) CreateCampaignWithProspects(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": res})
 }
 
-//func (h *Handler) ToggleCampaignTemplateAssociations(c *gin.Context) {
-//	user, exists := c.Get("user")
-//	if !exists {
-//		logger.Logger.Warn("Failed to get user from context : UNAUTHORIZED")
-//		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
-//		return
-//	}
-//
-//	currentUser := user.(models.User)
-//
-//}
+func (h *Handler) ToggleCampaignTemplateAssociations(c *gin.Context) {
+	user, exists := c.Get("user")
+	if !exists {
+		logger.Logger.Warn("Failed to get user from context : UNAUTHORIZED")
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	currentUser := user.(models.User)
+
+	var req ToggleTemplateAssociationReq
+	if err := c.ShouldBindJSON(&req); err != nil {
+		logger.Logger.Error("Failed to bind request: ", zap.Error(err))
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	req.UserID = currentUser.ID
+
+	res, err := h.Service.ToggleTemplateAssociation(c, &req)
+	if err != nil {
+		logger.Logger.Error("Failed to toggle campaign template associations: ", zap.Error(err))
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": res})
+}

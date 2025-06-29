@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/anuragdaksh7/zapmail-backend/internal/prospect"
+	"github.com/anuragdaksh7/zapmail-backend/models"
 )
 
 type Campaign struct {
@@ -64,6 +65,7 @@ type ToggleTemplateAssociationReq struct {
 }
 
 type ToggleTemplateAssociationRes struct {
+	Templates []models.Template `json:"templates"`
 }
 
 type Service interface {
