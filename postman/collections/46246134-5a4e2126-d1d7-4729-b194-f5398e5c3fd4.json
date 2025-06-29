@@ -402,6 +402,18 @@
 							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"user_id\": 1,\n        \"name\": \"with prospects\",\n        \"description\": \"\",\n        \"run_every_n_minutes\": 20,\n        \"total_prospects\": 2,\n        \"processed_prospects\": 0,\n        \"processed_at\": null,\n        \"current_status\": \"RUNNING\"\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "New Request",
+					"id": "46246134-8c1038cb-3e68-4057-8482-e94ab1e90f9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "46246134-b5b21b19-0b72-4efd-8e6b-3d78a39af004"
