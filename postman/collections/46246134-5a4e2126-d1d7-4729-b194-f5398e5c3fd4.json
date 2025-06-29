@@ -408,7 +408,20 @@
 		},
 		{
 			"name": "templates",
-			"item": [],
+			"item": [
+				{
+					"name": "create",
+					"id": "46246134-77d5fed1-b553-4dcd-ae99-1452d2961f55",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "46246134-a21df3bb-c9cf-4c0b-96ec-b244b641db44"
 		}
 	]
